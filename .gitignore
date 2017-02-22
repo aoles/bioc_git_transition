@@ -1,3 +1,5 @@
 transition.log
+svn_dump_update.log
 *.pyc
+*/*.puc
 update.svn
