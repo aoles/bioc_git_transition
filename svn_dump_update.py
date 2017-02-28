@@ -10,9 +10,6 @@ Usage:
 from src.local_svn_dump import LocalSvnDump
 import logging as log
 import ConfigParser
-log.basicConfig(filename='svn_dump_update.log', level=log.DEBUG)
-log.debug("Bioconductor SVN Dump Log File: \n")
-
 
 def svn_root_update(configfile):
     """Dump update needs to be run by ubuntu-user"""
@@ -24,6 +21,10 @@ def svn_root_update(configfile):
     remote_svn_server = Config.get('SVN', 'remote_svn_server')
     users_db = Config.get('SVN', 'users_db')
     update_file = Config.get('SVN', 'update_file')
+    svn_dump_log = Config.get('SVN', 'svn_dump_log')
+
+    log.basicConfig(filename=svn_dump_log, level=log.DEBUG)
+    log.debug("Bioconductor SVN Dump Log File: \n")
 
     for s in Config.sections():
        for k,v in Config.items(s):
